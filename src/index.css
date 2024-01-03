@@ -1,0 +1,222 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424; */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --forground:#353537;
+  --background:#FFFFFF;
+  --primaryColor:#00AEEF;
+  --customColor1:#FAFAFA;
+  --customColor2:#E8E8E9;
+  --customColor3:#D1D1D1;
+  --customColor4:#646464;
+  --customColor5:#E6F4FD;
+  --customColor6:#363637;
+  --customColor7:#0F2061;
+  --customColor8:#59AF5C;
+  --customColor9:#EFEFEF;
+  --customColor10:#FD7124;
+  --customColor11:#EA265C;
+  --customColor12:#E8AA00;
+  --customColor13:#39B54A;
+  --customColor14:#ECFDF3;
+  --customColor15:#027A48;
+  --customColor16:#F8F8F8;
+  --customColor17:#333333;
+  --customColor18:#FFFAEB;
+  --customColor19:#B54708;
+  --customColor20:#E6EEF5;
+  --customColor21:#33A9EC;
+  --customColor22:#98A2B3;
+  --customColor23:#B0DEF8;
+}
+
+
+
+
+
+a {
+  text-decoration: none;
+  color:inherit;
+} 
+
+
+a:hover {
+
+}
+
+.scrollFade{
+  position: relative;
+}
+.scrollFade::after{
+  display: none;
+  content: ' ';
+  position: absolute;
+  right: 93%;
+  left: -2%;
+  top: 0;
+  bottom: 4px;
+  transform: rotate(3.142rad);
+  background: rgb(250,250,250);
+  background: linear-gradient(90deg, rgba(250,250,250,0) 0%, rgba(250,250,250,1) 65%);
+}
+
+.scrollFade::before{
+  display: none;
+  content: ' ';
+  z-index: 1;
+  position: absolute;
+  left: 93%;
+  right: -2%;
+  top: 0;
+  bottom: 4px;
+
+  background: rgb(250,250,250);
+  background: linear-gradient(90deg, rgba(250,250,250,0) 0%, rgba(250,250,250,1) 65%);
+}
+
+.infoSvg{
+  position: relative;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.infoSvg img {
+  isolation: isolate;
+}
+.infoSvg::before{
+  content:" ";
+  position: absolute ;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* transform:scale(1.3); */
+  background: var(--background);
+ 
+  
+}
+
+.flowstorypoint .swiper-button-next, .flowstorypoint .swiper-button-prev{
+  background-color:var(--background) ;
+  border-radius: 4px;
+  padding: 12px 20px;
+  border:2px solid var(--customColor5)
+}
+
+.flowstorypoint .swiper-button-next::after, .flowstorypoint .swiper-button-prev::after{
+  font-size: clamp(14px,1vw,16px);  
+}
+
+.flowstorypoint .swiper-button-next{
+  margin-right: -0.7%
+}
+
+
+.flowstorypoint .swiper-button-prev{
+  margin-left: -0.7%
+}
+
+
+.flowstorypoint  .swiper-pagination-bullet {
+    background: transparent;
+    border:1px solid var(--primaryColor);
+    width:18px;
+    height: 18px;
+    opacity: 1;
+    position: relative;
+    overflow: visible;
+}
+
+.flowstorypoint .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background:var(--customColor23);
+    border: 0px;
+    transform: scale(1.16);
+    isolation: isolate;
+}
+.flowstorypoint .swiper-pagination-bullet.swiper-pagination-bullet-active::after{
+  position: absolute;
+  z-index: -1;
+  content: ' ';
+  inset: 3px;
+  /*  */
+  background: var(--primaryColor);
+  border: 3px solid white;
+  border-radius: 100%;
+}
+
+.flowstorypoint .flowstorypointChartDataLabels{
+  padding:5px;
+  background-color:'#EFEFEF';
+  border-radius:10px,
+}
+.flowpointChartDataLabels {
+  padding:0px 10px;
+}
+
+.highcharts-label.highcharts-tooltip .tooltipdot{
+  font-size:1rem;
+ 
+
+}
+
+
+/* .flowstorypoint .highcharts-title{
+  font-size: 24px !important;
+font-style: normal;
+font-weight: 400!important;
+line-height: normal;
+}
+
+.flowstorypoint .highcharts-title .subtitle{
+
+
+} */
+
+@media screen and (max-width:768px){
+  .scrollFade::after, .scrollFade::before{
+    display: block;
+  }
+
+  .flowstorypoint .swiper-button-next, .flowstorypoint .swiper-button-prev{
+  
+    padding: 5px 12px;
+    height: 32px;
+  }
+    
+  .flowstorypoint .swiper-button-next::after, .flowstorypoint .swiper-button-prev::after{
+    font-size: 11px;
+    /* line-height: normal; */
+    
+  }
+
+  .flowstorypoint .swiper-button-next{
+    margin-right: -9px;
+  }
+
+  .flowstorypoint .swiper-button-prev{
+    margin-left: -9px;
+  }
+
+   
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* color: #213547; */
+    background-color: #ffffff;
+  }
+  a:hover {
+    /* color: #747bff; */
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
