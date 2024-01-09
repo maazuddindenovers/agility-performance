@@ -7,6 +7,8 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424; */
 
+
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -38,6 +40,8 @@
   --customColor21:#33A9EC;
   --customColor22:#98A2B3;
   --customColor23:#B0DEF8;
+  --customColor24:#801763;
+  --customColor25:#E4E4E4;
 }
 
 

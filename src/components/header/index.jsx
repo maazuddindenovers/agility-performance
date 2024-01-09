@@ -24,7 +24,7 @@ const drawerWidth = 240;
 const navItems = [
     {label:'Growth plan',herf:'#',logo:Icon1,},
     {label:'Insigts',herf:'#',logo:Icon2},
-    {label:'Business Outcomes',herf:'#',logo:Icon3},
+    {label:'Business Outcomes',herf:'/businessoutcome',logo:Icon3},
     {label:'Reports', herf:'#',logo:Icon4},
     {label:'Growth Portal', herf:'#',logo:Icon5},
 ];
@@ -146,14 +146,17 @@ export default function Header(props) {
                     }}
             >
                 {navItems.map((item) => (
-                <Box key={item.label}  sx={{fontSize:'18px',flexGrow:'1',fontWeight:'400', lineHeight:'28px', display:'flex',gap:'0.7rem', alignItems:'center'}}>
-                    <Box sx={{width:'18px', aspectRatio:'1/1', display:'flex'}} >
-                        <img src={item.logo} width={'100%'} />
+                
+                    <Box key={item.label}  sx={{fontSize:'18px',flexGrow:'1',fontWeight:'400', lineHeight:'28px', }}>
+                        <Link to={item.herf} key={item.label} style={{display:'flex',gap:'0.7rem', alignItems:'center'}}>
+                        <Box sx={{width:'18px', aspectRatio:'1/1', display:'flex'}} >
+                            <img src={item.logo} width={'100%'} />
+                        </Box>
+                        <div  >
+                            {item.label}
+                        </div>
+                        </Link>
                     </Box>
-                    <Link  >
-                        {item.label}
-                    </Link>
-                </Box>
                 ))}
             </Box>
           </Hidden>
