@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../header";
-import GlobalThemeProvider from "../ThemeProvider/GloablThemeProvider";
+import GlobalThemeProvider from "../ThemeProvider/GlobalThemeProvider";
 import { Box, CssBaseline } from "@mui/material";
 
 

@@ -1,24 +1,26 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const slice = createSlice({
-  name: 'outcomeDialog',
+  name: 'board',
   initialState: {
-    dialogOpen: false,
+    dialogOpen: true,
+    boardType:'outcomes',
+    boardSubType:'kanban', 
   },
   reducers: {
     dialogToggle: state => {
- 
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
       state.dialogOpen = !state.dialogOpen
     },
+    updateBoardType:(state,action) => {
+      console.log(action)
+      state[action.payload.key] = action.payload.data 
+    }
+
    
   },
 });
 
-export const { dialogToggle} = slice.actions;
+export const { dialogToggle,updateBoardType} = slice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

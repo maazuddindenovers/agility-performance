@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import outcomeReducer from './slice/outcomeSlice';
+import boardReducer from './slice/boardSlice';
 
 
 export default configureStore({
   reducer: {
-        outcomeDialog:outcomeReducer
+        board:boardReducer
   },
 });

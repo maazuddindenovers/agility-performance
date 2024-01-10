@@ -51,12 +51,30 @@ const theme = createTheme({
             }
             }
         },
+        MuiMenuItem:{
+            styleOverrides:{
+                root:{
+                    marginLeft:'10px',
+                    marginRight:'10px',
+                    marginBottom:'2px',
+                    borderRadius:'5px',
+                    '&.Mui-selected':{
+                        backgroundColor:'var(--customColor26) !important'
+                    }
+
+                }
+            }
+        },
+      
         MuiSelect:{
             styleOverrides:{
                 select:{
                     paddingTop:'0.7rem',
-                    paddingBottom:'0.7rem'
-                }
+                    paddingBottom:'0.7rem',
+                    paddingLeft:'5px',
+                    
+                },
+             
             }
         },
         MuiContainer:{

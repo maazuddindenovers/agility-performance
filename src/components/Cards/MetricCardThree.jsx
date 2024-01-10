@@ -1,30 +1,12 @@
-import styled from "@emotion/styled";
+
 import { Icon } from "@iconify/react";
-import { Box, Card, CardContent, Divider,  LinearProgress,  Typography, linearProgressClasses } from "@mui/material";
+import { Box, Card, CardContent, Divider,  Typography } from "@mui/material";
+import ProgressBar from "../ProgressBar";
 
 
 
 
-const StyledLinearProgress = styled(LinearProgress)(({ theme,customcolor }) => ({
-    height: 24,
-    borderRadius: 3,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-      border:`1px solid ${customcolor}`,
-    '&::after':{
-        content:'" "',
-        position:'absolute',
-        inset:0,
-        border:'1.5px solid var(--background)'
-    }
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 3,
-      backgroundColor: customcolor,
- 
-    },
-  }));
-  
+
   
 
 const MetricCardThree = ({id='',text='',tags=[],progress,color=''}) => {
@@ -40,12 +22,7 @@ const MetricCardThree = ({id='',text='',tags=[],progress,color=''}) => {
                         {text}
                     </Typography>
                     {/* <LinearProgress /> */}
-                    <Box sx={{display:'flex', alignItems:'center',gap:2}}>
-                        <StyledLinearProgress variant="determinate" customcolor={color}   value={progress} sx={{width:'90%'}}/>
-                        <Typography sx={{width:'10%'}}>
-                            {progress}%
-                        </Typography>
-                    </Box>
+                    <ProgressBar progress={progress}  color={color}/>
                 </Box>
                 <Divider />
                 <Box sx={{display:'flex', flexWrap:"wrap", gap:1, py:1, px:[1,1,1,2]}}>

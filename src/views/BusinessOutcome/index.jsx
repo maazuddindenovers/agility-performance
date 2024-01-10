@@ -1,17 +1,18 @@
-import { Box } from "@mui/material";
+import {  Container } from "@mui/material";
 import BoardHeader from "./components/BoardHeader";
 import BoardsSection from "./components/BoardsSection";
-import OutcomeDialog from "./components/outcomeDialog/outcomeDialog";
+import BoardDialog from "./components/board/boardDialog";
+
 
 
 
 const BusinessOutcomes = () => {
     return (
-        <Box sx={{mt:2 }} >
+        <Container maxWidth="xl" sx={{m:'auto', mt:2 }} >
             <BoardHeader />
             <BoardsSection />
-            <OutcomeDialog />
-        </Box>
+            <BoardDialog />
+        </Container>
     ) 
 }
  
