@@ -10,6 +10,7 @@ import DialogHead from './dialogHead';
 import DialogEditor from './dialogEditor';
 import DialogProgress from './dialogProgress';
 import DialogTags from './dialogTags';
+import DialogTabs from './dialogTabs';
 
 
 export default function BoardDialog() {
@@ -31,11 +32,11 @@ export default function BoardDialog() {
         <DialogContent sx={{padding:0}}>
           <DialogHead handleClose={handleClose} />
           <Box sx={{px:4, py:3}}>
-            <Box sx={{display:'flex', gap:1}}>
-                <Box sx={{width:'70%'}}>
+            <Box sx={{display:'flex', flexDirection:['column', 'column','row'], gap:2}}>
+                <Box sx={{width:['100%','100%','70%']}}>
                     <DialogEditor  />
                 </Box >
-                <Box sx={{width:'30%'}} >
+                <Box sx={{width:['100%','100%','30%']}} >
                   <Box>
                     <DialogProgress progress={30} />
                   </Box>
@@ -44,7 +45,11 @@ export default function BoardDialog() {
                   </Box>
                 </Box>
             </Box>
+            <Box>
+             <DialogTabs />
+            </Box>
           </Box>
+         
         </DialogContent>
 
       </Dialog>

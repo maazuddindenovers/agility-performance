@@ -48,6 +48,8 @@
   --customColor29:#3C4858;
   --customColor30:#585858;
   --customColor31:#CCCCCC;
+  --customColor32:#E0E0E0;
+  
 }
 
 
@@ -175,6 +177,15 @@ a:hover {
   font-size:1rem;
  
 
+}
+
+.editorWrapperClass{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.editorMain > .DraftEditor-root{
+  aspect-ratio: 1/0.2;
 }
 
 

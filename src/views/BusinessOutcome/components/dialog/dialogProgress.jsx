@@ -8,7 +8,7 @@ const DialogProgress = ({color='var(--customColor13)', progress=0}) => {
     return (
         <Box>
         <Typography sx={{fontWeight:600,mb:1, fontSize:'clamp(16.5px,1.4vw,18px)', color:'var(--customColor29)'}}>
-           Progress
+           Overall Progress
         </Typography>
         <ProgressBar 
             progress={progress} 

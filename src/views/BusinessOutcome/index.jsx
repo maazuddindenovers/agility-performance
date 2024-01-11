@@ -1,7 +1,7 @@
 import {  Container } from "@mui/material";
 import BoardHeader from "./components/BoardHeader";
 import BoardsSection from "./components/BoardsSection";
-import BoardDialog from "./components/board/boardDialog";
+import BoardDialog from "./components/dialog/dialogBoard";
 
 
 
