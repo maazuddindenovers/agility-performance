@@ -24,6 +24,7 @@ const Header = ({color='', text=''}) => {
 
 
 const BoardColumn = ({headerData=null}) => {
+    
     return (
         <Box sx={{minHeight:100, borderTopLeftRadius:'5px', borderTopRightRadius:'5px', backgroundColor:'var(--customColor25)' }} >
           { !!headerData &&  <Header color={headerData.color} text={headerData.text} /> } 

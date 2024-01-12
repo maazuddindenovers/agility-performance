@@ -96,7 +96,7 @@ export default function Header(props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.label} disablePadding >
+          <ListItem component={Link} to={item.herf} key={item.label} disablePadding >
             <ListItemIcon sx={{minWidth:'40px'}}>
               <img src={item.logo} width={'100%'} style={{maxWidth:'20px', marginLeft:'auto'}} />
             </ListItemIcon>

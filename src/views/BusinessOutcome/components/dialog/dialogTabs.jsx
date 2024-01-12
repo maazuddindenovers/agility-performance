@@ -1,5 +1,5 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { Children,isValidElement,useState } from "react";
 
 
 
@@ -12,7 +12,7 @@ function a11yProps(index) {
 
 
 
-  function DialogTabPanel(props) {
+export  function DialogTabPanel(props) {
     const { children, value, index, ...other } = props;
   
     return (
@@ -20,11 +20,11 @@ function a11yProps(index) {
         role="tabpanel"
         hidden={value !== index}
         id={`dialog-tab-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
+        aria-labelledby={`dialog-tab-${index}`}
         {...other}
       >
         {value === index && (
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ py: 1 }}>
             {children}
           </Box>
         )}
@@ -33,22 +33,16 @@ function a11yProps(index) {
   }
   
 
-  const tabsNames = [
-    'key result',
-    'projects',
-    'comments',
-    'custom fields',
-    'links'
-  ]
 
-const DialogTabs = ({active='projects'}) => {
-    const [value, setValue] = useState('projects');
+const  DialogTabs = ({children,activeTabIndex=0}) => {
+    const [activeTab, setActiveTab] = useState(activeTabIndex);
 
     const handleChange = (event, newValue) => {
-      setValue(newValue);
+      setActiveTab(newValue);
     };
+
     return (
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%', py:2, }}>
         <Box sx={{ 
                 borderBottom: 2, 
                 borderColor: 'divider' ,
@@ -65,19 +59,32 @@ const DialogTabs = ({active='projects'}) => {
                          px:'22px',
                 },
                 '& .MuiTab-root.Mui-selected':{
-                    backgroundColor:'var(--background)'
+                    backgroundColor:'var(--background)',
+                    color:'currentcolor'
                 }
             }}>
-          <Tabs value={`dialog-tab-${value}`} onChange={handleChange} indicatorColor={false}>
-            {tabsNames.map((tn) => {
-                return <Tab key={`dialog-tab-${tn}`} label={tn} {...a11yProps(tn)} />
-            })}
+          <Tabs value={activeTab} onChange={handleChange} indicatorColor={false}>
+            {
+                Children.map(children,(child,index) => {
+                  if(!isValidElement(child)) return null;
+                  const {tabLabel} = child.props;
+                  return <Tab key={`dialog-tab-${tabLabel}`} label={tabLabel} {...a11yProps(index)} />
+                })
+            }    
 
           </Tabs>
         </Box>
-        <DialogTabPanel>
-            
-        </DialogTabPanel>
+       
+       {
+        Children.map(children,(child,index) => {
+          return (
+            <DialogTabPanel value={activeTab} index={index} >
+              {child}
+            </DialogTabPanel> 
+          )
+        })
+       }
+
       </Box>
     )
 }

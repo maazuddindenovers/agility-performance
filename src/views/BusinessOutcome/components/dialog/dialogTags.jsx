@@ -6,12 +6,12 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
-import { IconButton, Typography } from '@mui/material';
+import { Chip,  Stack, Typography } from '@mui/material';
 import { Cancel } from '@mui/icons-material';
-import { ClickAwayListener } from '@mui/base';
+// import { ClickAwayListener } from '@mui/base';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
 const MenuProps = {
 
   // PaperProps: {
@@ -41,7 +41,7 @@ function getStyles(name, tags, theme) {
 export default function DialogTags() {
   const theme = useTheme();
   const [tags, setTags] = React.useState([]);
-  const [selectOpen, setSelectOpen] = React.useState(false)
+  // const [selectOpen, setSelectOpen] = React.useState(false)
   const handleChange = (event) => {
 
     
@@ -64,7 +64,8 @@ export default function DialogTags() {
 
         <Select
           sx={{
-                '&>div::before':{
+             paddingRight:'45px',
+              '&>div::before':{
                 content:'" "',
                 position:'absolute',
                 backgroundColor:'rgba(0, 0, 0, 0.42)',
@@ -75,49 +76,56 @@ export default function DialogTags() {
                 transform:'scale(1)',
               },
               '& .MuiSvgIcon-root':{
-                right:'2%'
+                right:'2%',
+               
               }
           }}
           variant='standard'
           multiple
-          // open={selectOpen}
           value={tags}
           onChange={handleChange}
-          
-        
-          IconComponent={() => <KeyboardArrowDownRoundedIcon onClick={() => setSelectOpen(true)} />}
+          IconComponent={() => <KeyboardArrowDownRoundedIcon sx={{position:'absolute', color:'var(--customColor31)'}}/>}
+          onClick={(e) =>e.stopPropagation() } 
           renderValue={(selected) => (
-            <Box  sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }} >
-              {selected.map((value) => (
-                <Box 
-                    key={value}
-                    sx={{
-                        display:'flex', 
-                        alignItems:'center',
-                        border:'1px solid var(--customColor31)', 
-                        lineHeight:'20px', 
-                        fontSize:"14px", 
-                        borderRadius:'4px', 
-                        padding:'4px 6px',
-                    }}
-                >
-                       <Box> {value}</Box>
-                       <IconButton sx={{py:0,px:0, ml:1}}
-            
-                        // onMouseDown={(event) => {
-                        //     event.preventDefault()
-                        //   }}
-                       >
-                            <Cancel sx={{fill:'var(--customColor31)', pointerEvents:'none'}}/>
-                       </IconButton>
-                </Box>   
-              ))}
-            </Box>
+      
+            <Stack gap={'5px'} direction="row" flexWrap="wrap">
+            {selected.map((value) => (
+              <Chip
+                key={value}
+                label={value}
+                sx={{
+                    display:'flex', 
+                    alignItems:'center',
+                    border:'1px solid var(--customColor31)', 
+                    lineHeight:'20px', 
+                    fontSize:"14px", 
+                    borderRadius:'4px', 
+                    padding:'0px 0px',
+                    isolation:'isolate',
+                    height:'30px',
+                    backgroundColor:'transparent',
+                    '& .MuiChip-label':{
+                      pl:'8px',
+                    }
+                }}
+                onDelete={() =>
+                  setTags(
+                    tags.filter((item) => item !== value)
+                  )
+                }
+                deleteIcon={
+                  <Cancel
+                    onMouseDown={(event) => event.stopPropagation()}
+                  />
+                }
+              />
+            ))}
+          </Stack>
           )}
           MenuProps={MenuProps}
-        
+                   
         >
-      
+          
           {names.map((name) => (
             <MenuItem
               key={name}

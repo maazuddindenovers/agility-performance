@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { businessOutcomeData } from '../../utils/data';
 
 export const slice = createSlice({
   name: 'board',
   initialState: {
-    dialogOpen: true,
+    dialogOpen: false,
     boardType:'outcomes',
     boardSubType:'kanban', 
+    data:businessOutcomeData,
   },
   reducers: {
     dialogToggle: state => {
@@ -14,8 +16,8 @@ export const slice = createSlice({
     updateBoardType:(state,action) => {
       console.log(action)
       state[action.payload.key] = action.payload.data 
-    }
-
+    },
+    
    
   },
 });

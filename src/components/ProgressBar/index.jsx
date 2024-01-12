@@ -24,13 +24,15 @@ const StyledLinearProgress = styled(LinearProgress)(({ customcolor }) => ({
   
 
 
-  const ProgressBar = ({progress,color,allowValue=true,barSx={},valueSx={}}) => {
+  const ProgressBar = ({progress,color="var(--customColor13)",allowValue=true,barSx={},valueSx={}}) => {
     return (
         <Box sx={{display:'flex', alignItems:'center',gap:2}}>
           <StyledLinearProgress variant="determinate" customcolor={color}   value={progress} sx={{width:'90%',height: 24,...barSx}}/>
-         {!!allowValue && <Typography sx={{width:'10%',...valueSx}}>
-              {progress}%
-          </Typography>}
+         {!!allowValue && 
+            <Typography sx={{width:'10%',...valueSx}}>
+                {progress}%
+            </Typography>
+          }
         </Box>
     )
   }

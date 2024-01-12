@@ -11,6 +11,7 @@ import DialogEditor from './dialogEditor';
 import DialogProgress from './dialogProgress';
 import DialogTags from './dialogTags';
 import DialogTabs from './dialogTabs';
+import BoardProject from '../BoardProjects';
 
 
 export default function BoardDialog() {
@@ -46,7 +47,14 @@ export default function BoardDialog() {
                 </Box>
             </Box>
             <Box>
-             <DialogTabs />
+              <DialogTabs activeTabIndex={1}>
+                <Box tabLabel="key results">Key results</Box>
+                <BoardProject tabLabel="Projects" />  
+                <Box tabLabel="Comments">comments</Box>
+                <Box tabLabel="custom fields">custom fields</Box>
+                <Box tabLabel="checklist">checklist</Box>
+                <Box tabLabel="links">links</Box>
+              </DialogTabs>
             </Box>
           </Box>
          

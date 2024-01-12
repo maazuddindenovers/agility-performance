@@ -143,7 +143,7 @@ const StatusTag = ({text}) => {
     {
       feature:'Agile Team View',
       parent:<ParentTag text='reports' />,
-      status:<StatusTag text='in discovery' />,
+      status:<StatusTag text='in discovery' />, 
       cycleTime:'55',
     },
     {

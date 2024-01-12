@@ -21,12 +21,13 @@ const CustomTabel = ({heads=[],rowData=[]}) => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 },'& th':{whiteSpace:'pre'} }}
                 
                 >
-                <TableCell  component="th" scope="row">
-                    {row.feature}
-                </TableCell>
-                <TableCell  >{row.parent}</TableCell>
-                <TableCell >{row.status}</TableCell>
-                <TableCell >{row.cycleTime}</TableCell>
+                    {Object.entries(row).map((rowD,rowDInd) => {
+                        return (
+                        <TableCell key={rowD[0]} {...(rowDInd == 0 ? {component:'th',scope:'row'} : {} )}>
+                            {rowD[1]}
+                        </TableCell>
+                        )
+                    })}
                 </TableRow>
             ))}
             </TableBody>
