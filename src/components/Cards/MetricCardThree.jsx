@@ -19,9 +19,11 @@ const MetricCardThree = ({id='',text='',tags=[],progress,color=''}) => {
                         <Typography sx={{color:'var(--customColor6)', fontSize:'clamp(14, 2vw, 16px)', marginBottom:1}}>
                         ID {id}
                         </Typography>
-                        <Typography sx={{display:' -webkit-box','--webkit-line-clamp':1,  overflow: 'hidden', 'WebkitBoxOrient': 'vertical',  color:'var(--customColor6)', fontSize:'clamp(14px, 2vw, 19px)',  marginBottom:1}}>
+                        <div>
+                        <Typography sx={{display:' -webkit-box','--webkit-line-clamp':1,  overflow: 'hidden', '-webkit-box-orient': 'vertical',  color:'var(--customColor6)', fontSize:'clamp(14px, 2vw, 19px)',  marginBottom:1}}>
                             {text}
                         </Typography>
+                        </div>
                         {/* <LinearProgress /> */}
                         <ProgressBar progress={progress}  color={color}/>
                     </Box>

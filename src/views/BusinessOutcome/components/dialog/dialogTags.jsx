@@ -23,14 +23,15 @@ const MenuProps = {
 };
 
 const names = [
-  'In Discovery',
-  'Insurence',
-  'Lending',
-  'Q2-2020',
+  'in discovery',
+  'insurence',
+  'lending',
+  'q2-2020',
 ];
 
 function getStyles(name, tags, theme) {
   return {
+    textTransform:'capitalize',
     fontWeight:
       tags.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
@@ -38,9 +39,9 @@ function getStyles(name, tags, theme) {
   };
 }
 
-export default function DialogTags() {
+export default function DialogTags({defaultTags=[],handleTagsChange}) {
   const theme = useTheme();
-  const [tags, setTags] = React.useState([]);
+  const [tags, setTags] = React.useState(defaultTags);
   // const [selectOpen, setSelectOpen] = React.useState(false)
   const handleChange = (event) => {
 
@@ -52,6 +53,10 @@ export default function DialogTags() {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+
+    console.log('changes')
+
+    handleTagsChange('tags',value)
   };
 
   return (
@@ -108,10 +113,11 @@ export default function DialogTags() {
                       pl:'8px',
                     }
                 }}
-                onDelete={() =>
+                onDelete={() =>{
                   setTags(
                     tags.filter((item) => item !== value)
                   )
+                  handleTagsChange('tags', tags.filter((item) => item !== value))}
                 }
                 deleteIcon={
                   <Cancel

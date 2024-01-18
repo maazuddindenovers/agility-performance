@@ -1,24 +1,39 @@
 import { Box, Typography } from "@mui/material"
-import {  EditorState } from "draft-js";
+import {  EditorState,ContentState,convertFromHTML } from "draft-js";
 import { useState } from "react";
-import { Editor } from 'react-draft-wysiwyg';
+import { Editor, } from 'react-draft-wysiwyg';
 
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { isJSON } from "../../../../utils/helper";
 
 
 const maxChar = 1000
 
 
-const DialogEditor = () => {
-
-    const [state, setState] = useState( () => EditorState.createEmpty())
-
+const DialogEditor = ({defaultContent=null,handleChange}) => {
  
+    const [state, setState] = useState( () => 
+        !!defaultContent ?
+        EditorState.createWithContent(
+            typeof defaultContent == 'string' ? 
+            ContentState.createFromBlockArray(
+                convertFromHTML(`${defaultContent}`) 
+                )
+                :
+                defaultContent
+        
+        ):
+            EditorState.createEmpty()
+        )
+
+
+    
 
     const handleBeforeInput = (char,editorState) => {  
-        console.log(editorState.getCurrentContent().getPlainText().length < maxChar)
+      
         if(editorState.getCurrentContent().getPlainText().length < maxChar){
+            handleChange('description',editorState.getCurrentContent())
             return 'not-handled'
         }else{
             return 'handled'

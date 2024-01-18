@@ -10,7 +10,7 @@ import useBoard from "../hook/useBoard";
 const BoardsSection = () => {
 
 
-    const {columnHeadData} = useBoard()
+    const {columnHeadData,filteredData} = useBoard()
 
        
 
@@ -19,16 +19,16 @@ const BoardsSection = () => {
      
         <Grid container spacing={2} sx={{my:1}}>
             <Grid item xs={12} sm={6} md={3}>
-                <BoardColumn headerData={columnHeadData[0] }/>
+                <BoardColumn headerData={columnHeadData[0] } columnData={filteredData[columnHeadData[0]?.id]}/>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-                <BoardColumn headerData={columnHeadData[1]} />
+                <BoardColumn headerData={columnHeadData[1]}  columnData={filteredData[columnHeadData[1]?.id]} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-                <BoardColumn headerData={columnHeadData[2]} />
+                <BoardColumn headerData={columnHeadData[2]} columnData={filteredData[columnHeadData[2]?.id]} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-                <BoardColumn headerData={columnHeadData[3]} />
+                <BoardColumn headerData={columnHeadData[3]}  columnData={filteredData[columnHeadData[3]?.id]}/>
             </Grid>
         </Grid>
     )

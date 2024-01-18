@@ -1,8 +1,9 @@
 
 import { Box, Button, FormControl, MenuItem, Select } from "@mui/material";
-import { dialogToggle, updateBoardType } from "../../../store/slice/boardSlice";
+import { dialogToggle,createNewData, updateBoardType, setActiveData } from "../../../store/slice/boardSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import {businessOutcomeColumnData} from "../../../utils/data"
+import { useMemo } from "react";
 
 
 
@@ -10,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 const BoardHeader = () => {
     const boardType = useSelector((state) => state.board.boardType); 
     const boardSubType = useSelector((state) => state.board.boardSubType);
+    const data = useSelector(state => state.board.data)
+
 
     const dispatch = useDispatch();
 
@@ -20,6 +23,31 @@ const BoardHeader = () => {
         }
     }
 
+    const newDataID = () => {
+        let largest = 0;
+        data.forEach(element => {
+            if (element.ID > largest){
+                largest = element.ID 
+            }
+        });
+        return largest + 1
+    }
+
+    const handleCreateNew = () => {
+        dispatch(setActiveData({
+                type:boardType,
+                subType:boardSubType,
+                columnData:businessOutcomeColumnData[0], 
+                extraTopTags:'Arrested Development',
+                ID:newDataID(),
+                text:'Ensure seamless Customer Success experience so that',
+                description:'We believe that by focusing efforts around the creation of annuity products within the senior market we establish a foothold to create additional opportunities in this market.',
+                progress:74,
+                tags:['lending','claims','in discovery'],
+                cardColor:'var(--customColor13)',
+        }))
+        dispatch(dialogToggle())
+    }
     return (
         <Box sx={{ display:'flex', justifyContent:'space-between' }}>
             <Box></Box>
@@ -53,7 +81,7 @@ const BoardHeader = () => {
                         <MenuItem value={'tagabc'} sx={{textTransform:'capitalize'}}>{boardType} by TagABC</MenuItem>
                     </Select>
                 </FormControl>    
-                <Button variant="outlined" sx={{textTransform:'capitalize',px:0}} onClick={() =>   dispatch(dialogToggle())}>
+                <Button variant="outlined" sx={{textTransform:'capitalize',px:0}} onClick={handleCreateNew}>
                     Create
                 </Button>
             </Box> 

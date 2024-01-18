@@ -42,28 +42,37 @@ const  DialogTabs = ({children,activeTabIndex=0}) => {
     };
 
     return (
-        <Box sx={{ width: '100%', py:2, }}>
+        <Box sx={{ width: '100%', py:2, pt:[4,2] }}>
         <Box sx={{ 
                 borderBottom: 2, 
                 borderColor: 'divider' ,
+                '& .MuiTabs-root':{
+                  minHeight:['40px','48px'],
+                },
+                '& .MuiTabs-scroller':{
+                  overflow:'auto !important',
+                },
                 '& .MuiTab-root':{
+
                         backgroundColor:"var(--customColor32)",
                         border:'0.5px solid var(--customColor27)',
                         borderBottom:0,
                         color:'var(--customColor29)',
                         textTransform:'uppercase',
                          fontWeight:600,
-                         fontSize:'14px',
+                         fontSize:['12px','14px'],
                          borderTopLeftRadius:'3px',
                          borderTopRightRadius:'3px',
-                         px:'22px',
+                         px:['18px','22px'],
+                         py:['14px','22px'],
+                         minHeight:['40px','48px']
                 },
                 '& .MuiTab-root.Mui-selected':{
                     backgroundColor:'var(--background)',
                     color:'currentcolor'
                 }
             }}>
-          <Tabs value={activeTab} onChange={handleChange} indicatorColor={false}>
+          <Tabs value={activeTab} onChange={handleChange}   indicatorColor={false}>
             {
                 Children.map(children,(child,index) => {
                   if(!isValidElement(child)) return null;

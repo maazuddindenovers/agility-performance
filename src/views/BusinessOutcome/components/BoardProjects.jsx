@@ -34,11 +34,14 @@ const heads = [
 
 
 
+
+
+
 const BoardProject = () => {
 
     return (
         <Box>
-            <Box sx={{maxWidth:'280px',my:1, ml:'auto'}}>
+            <Box sx={{maxWidth:'280px',my:1, ml:['unset','auto','auto']}}>
                 <Typography sx={{color:'var(--customColor29)', fontWeight:600, mb:1, fontSize:'14px'}}>
                     Overall Initiative Progress
                 </Typography> 
